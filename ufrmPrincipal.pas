@@ -10,20 +10,20 @@ uses
 
 type
   TfrmPrincipal = class(TForm)
-    TabControl: TTabControl;
-    TabLogin: TTabItem;
-    TabMain: TTabItem;
+    tbcPrincipal: TTabControl;
+    tabLogin: TTabItem;
+    tabMain: TTabItem;
     Rectangle1: TRectangle;
     Image1: TImage;
     Layout1: TLayout;
     Label1: TLabel;
-    edt_email: TEdit;
+    edtEmail: TEdit;
     Label2: TLabel;
-    edt_senha: TEdit;
-    btn_acessar: TButton;
+    edtSenha: TEdit;
+    btnAcessar: TButton;
     StyleBook1: TStyleBook;
     ActionList1: TActionList;
-    ActMain: TChangeTabAction;
+    actMudaAba: TChangeTabAction;
     ToolBar1: TToolBar;
     btn_menu: TSpeedButton;
     Rectangle2: TRectangle;
@@ -37,8 +37,8 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Layout5: TLayout;
-    img_receita: TImage;
-    img_despesa: TImage;
+    imgReceita: TImage;
+    imgDespesa: TImage;
     MultiView: TMultiView;
     Rectangle3: TRectangle;
     Image2: TImage;
@@ -47,9 +47,9 @@ type
     ListBoxItem2: TListBoxItem;
     ListBoxItem3: TListBoxItem;
     ListBoxItem4: TListBoxItem;
-    TabLancamentos: TTabItem;
+    tabLancamentos: TTabItem;
     ToolBar2: TToolBar;
-    SpeedButton1: TSpeedButton;
+    btnVoltar: TSpeedButton;
     Label9: TLabel;
     Rectangle4: TRectangle;
     Label10: TLabel;
@@ -65,12 +65,11 @@ type
     Layout7: TLayout;
     Label13: TLabel;
     Label14: TLabel;
-    ActLancamentos: TChangeTabAction;
-    procedure btn_acessarClick(Sender: TObject);
+    procedure btnAcessarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ListBoxItem2Click(Sender: TObject);
   private
-    { Private declarations }
+    procedure mudaParaAba(pAba: TTabItem);
   public
     { Public declarations }
   end;
@@ -82,21 +81,27 @@ implementation
 
 {$R *.fmx}
 
-procedure TfrmPrincipal.btn_acessarClick(Sender: TObject);
+procedure TfrmPrincipal.btnAcessarClick(Sender: TObject);
 begin
-  ActMain.ExecuteTarget(self);
+  mudaParaAba(tabMain);
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  TabControl.ActiveTab := TabLogin;
-  TabControl.TabPosition := TTabPosition.None;
+  tbcPrincipal.ActiveTab := TabLogin;
+  tbcPrincipal.TabPosition := TTabPosition.None;
 end;
 
 procedure TfrmPrincipal.ListBoxItem2Click(Sender: TObject);
 begin
-  ActLancamentos.ExecuteTarget(self);
+  mudaParaAba(tabLancamentos);
   MultiView.Visible := false;
+end;
+
+procedure TfrmPrincipal.mudaParaAba(pAba: TTabItem);
+begin
+  actMudaAba.Tab := pAba;
+  actMudaAba.ExecuteTarget(nil);
 end;
 
 end.

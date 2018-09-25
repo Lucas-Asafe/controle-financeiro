@@ -3,12 +3,12 @@ program prjControleFinanceiro;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  ufrmPrincipal in 'ufrmPrincipal.pas' {Form1};
+  ufrmPrincipal in 'ufrmPrincipal.pas' {frmPrincipal};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.
