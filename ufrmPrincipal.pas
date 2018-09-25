@@ -101,7 +101,7 @@ end;
 procedure TfrmPrincipal.mudaParaAba(pAba: TTabItem);
 begin
   actMudaAba.Tab := pAba;
-  actMudaAba.ExecuteTarget(nil);
+  actMudaAba.ExecuteTarget(Self);
 end;
 
 end.
